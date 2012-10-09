@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Chinachu : デジタル放送番組のLinux向けEPG自動録画予約システム" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Chinachu</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/kanreisa/Chinachu">View on GitHub</a>
+
+          <h1 id="project_title">Chinachu</h1>
+          <h2 id="project_tagline">デジタル放送番組のLinux向けEPG自動録画予約システム</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/kanreisa/Chinachu/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/kanreisa/Chinachu/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>Chinachuは、Linux向けに作られた、デジタル放送番組をEPG情報を元に自動で録画予約するためのシステムです。
+<code>Node.js</code>、<code>epgdump</code>等を利用して録画予約の完全自動化及びリアルタイムWUIを実現しています。
+Node.jsを利用するリアルタイムWUIは、ウェブサーバーとして独立していますので、Apache等は不要です。
+そしてDBMSは利用せず、軽快に動作します。必要なデーターはすべて人間にも理解可能なjson形式で保存されます。</p>
+
+<p>Node.jsはChinachuのインストーラーが自身専用にビルドするので、事前環境準備は不要です。</p>
+
+<h3>主な特徴と機能</h3>
+
+<ul>
+<li>ルール設定による録画予約の完全自動化</li>
+<li>WUIからの一時予約(手動予約)</li>
+<li>任意のLinuxユーザ権限で動作</li>
+<li>HTTPストリーミングとHLS (ffmpegによるライブトランスコード)</li>
+<li>全ての放送波に対応</li>
+<li>複数番組同時録画 (チューナー数無限)</li>
+<li>Node.jsによるWebSocket対応のリアルタイムWUI (IPv6, BASIC認証, TLS暗号化をサポート)</li>
+<li>REST API</li>
+<li>CLI</li>
+<li>IRC Bot</li>
+</ul><h3>クイックインストール</h3>
+
+<pre><code>sudo apt-get install build-essential curl git-core libssl-dev
+sudo apt-get install ffmpeg
+
+sudo adduser chinachu
+sudo -i -u chinachu
+
+git clone git://github.com/kanreisa/Chinachu.git ~/chinachu
+cd ~/chinachu/
+./chinachu installer
+
+./chinachu service operator initscript &gt; /tmp/chinachu-operator
+./chinachu service wui initscript &gt; /tmp/chinachu-wui
+sudo chown root:root /tmp/chinachu-operator /tmp/chinachu-wui
+sudo chmod +x /tmp/chinachu-operator /tmp/chinachu-wui
+sudo mv /tmp/chinachu-operator /tmp/chinachu-wui /etc/init.d/
+
+sudo service chinachu-operator start
+sudo service chinachu-wui start
+</code></pre>
+
+<h3>ドキュメント</h3>
+
+<p>こちらをご覧ください: <a href="https://github.com/kanreisa/Chinachu/wiki">https://github.com/kanreisa/Chinachu/wiki</a></p>
+
+<h3>注意</h3>
+
+<p>Chinachuは学術研究目的で開発された試験的なシステムです。全ての動作において無保証です。
+このシステムによる全ての結果に対して当プロジェクトは一切の責任を持ちません。</p>
+
+<p>このオープンソースソフトウェアは主にデジタル放送受信装置開発者を対象にしているものです。
+ライセンスに従う限り誰でも自由にソースコードを利用・改変し組込開発することができます。</p>
+
+<h3>Support or Contact</h3>
+
+<p>For anything non-support related you can contact me at <a href="mailto:re@pixely.jp">re@pixely.jp</a> or <a href="https://github.com/kanreisa" class="user-mention">@kanreisa</a>. I don't have the time to answer every support related email individually.</p>
+
+<h3>Licenses</h3>
+
+<p>Copyright (c) 2012 Yuki KAN and Chinachu Project Contributors
+<a href="http://akkar.in/projects/chinachu/">http://akkar.in/projects/chinachu/</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Chinachu maintained by <a href="https://github.com/kanreisa">kanreisa</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-4856278-12");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>

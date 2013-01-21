@@ -16,9 +16,9 @@
 	<div class="wrapper">
 		<header>
 			<h1>Chinachu <small style="color:red">beta</small></h1>
-			<p>デジタル放送番組のLinux向けEPG自動録画予約システム</p>
+			<p>A open source EPG digital video recorder system for Linux.</p>
 			
-			<p class="view"><a href="https://github.com/kanreisa/Chinachu">View the Project on GitHub <small>kanreisa/Chinachu</small></a></p>
+			<p class="view"><a href="https://github.com/kanreisa/Chinachu">View the Project on GitHub</a></p>
 			
 			
 			<ul>
@@ -28,25 +28,41 @@
 			</ul>
 		</header>
 		<section>
-			<p><code>Chinachu</code>は、Linux向けに作られた、デジタル放送番組をEPG情報を元に自動で録画予約するためのシステムです。
-			<code>Node.js</code>、<code>epgdump</code>等を利用して録画予約の完全自動化及びリアルタイムWUIを実現しています。
-			<code>Node.js</code>を利用するリアルタイムWUIは、ウェブサーバーとして独立していますので、<code>Apache</code>等は不要です。
-			そしてDBMSは利用せず、軽快に動作します。必要なデーターはすべて人間にも理解可能なjson形式で保存されます。</p>
+			<p><code>Chinachu</code>は、Linuxで動作する、デジタル放送番組向けのEPG録画予約管理システムです。
+			細かい予約ルールによる録画予約の完全自動化や、<code>socket.io</code>によるリアルタイム性の高いWUIアプリを実現しています。
+			REST APIとWUIは、ウェブサーバーとして単独で動作しますので、<code>Apache</code>や<code>PHP</code>等は不要です。
+			そして<code>MySQL</code>等のDBMSは利用せず、軽快に動作します。必要なデーターはすべて人間にも理解可能な<code>JSON</code>形式で保存されます。</p>
 			
-			<p><code>Node.js</code>は<code>Chinachu</code>のインストーラーが自身専用にビルドするので、事前環境準備は不要です。</p>
+			<p>システムの大半が<code>Node</code>プラットフォーム上で動作しますが、インストーラーが自身専用に自動構築するので、特に気にする必要はありません。Linuxの知識だけで導入できます。</p>
 			
 			<h3>Features</h3>
 			
 			<ul>
-				<li>Fully-automated Reserving by EPG and Rule</li>
+				<li>EPG-driven</li>
+				<li>Fully-automated Reserving by Rule</li>
 				<li>HTTP Streaming, HTTP Live Streaming (FFmpeg live transcoding)</li>
 				<li>Partial Supports ISDB / DVB</li>
 				<li>Multi Track Recording (Unlimited Tuners)</li>
-				<li>WUI (Supports IPv6, Auth, TLS)</li>
+				<li>Real-time WUI (Supports IPv6, Auth, TLS)</li>
 				<li>REST API</li>
 				<li>CLI</li>
-				<li>IRC Bot (Experimental)</li>
+				<li>UPnP AV 1.0 DMS (like DLNA) *testing</li>
+				<li>Tweeting *testing</li>
+				<li>IRC Bot *testing</li>
 			</ul>
+			
+			<p>
+				<img src="screenshots/01.png">
+				<img src="screenshots/02.png">
+				<img src="screenshots/03.png">
+				<img src="screenshots/04.png">
+				<img src="screenshots/05.png">
+				<img src="screenshots/06.png">
+				<img src="screenshots/07.png">
+				<img src="screenshots/08.png">
+				<img src="screenshots/09.png">
+				<img src="screenshots/10.png">
+			</p>
 			
 			<h3>Documentation</h3>
 			
@@ -54,11 +70,14 @@
 			
 			<h3>Disclaimer</h3>
 			
-			<p>Chinachuは学術研究目的で開発された試験的なシステムです。全ての動作において無保証です。
-			このシステムによる全ての結果に対して当プロジェクトは一切の責任を持ちません。</p>
+			<p>Chinachu is EXPERIMENTAL system developed for academic research. it's open-source software with ABSOLUTELY NO WARRANTY. </p>
 			
-			<p>このオープンソースソフトウェアは主にデジタル放送受信装置開発者を対象にしているものです。
-			ライセンスに従う限りどなたでも自由にソースコードを利用・改変し組込開発等を実施することができます。</p>
+			<p><small>Chinachuは学術研究目的で開発された試験的なシステムです。全ての動作において無保証です。
+			このシステムによる全ての結果に対して当プロジェクトは一切の責任を持ちません。
+			このオープンソースソフトウェアは主にデジタル放送受信装置開発者を対象にしているものです。
+			ライセンスに従う限りどなたでも自由にソースコードを利用・改変し組込開発等を実施することができます。
+			また、これには実際の放送電波を受信するための機能や暗号化されたデータを取り扱う機能等は全く有しておらず、
+			実運用を実施するには対象の利用信号における規定を元に別途用意する必要があります。</small></p>
 			
 			<h3>Support or Contact</h3>
 			

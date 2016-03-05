@@ -1262,6 +1262,11 @@ function mirakurunProgramsToLegacyPrograms(ch, service, programs) {
 	ch.programs = convertPrograms(programme, JSON.parse(JSON.stringify(ch)));
 }
 
+if (global.test) {
+	exports.convertPrograms = convertPrograms;
+	return;
+}
+
 // 既に実行中か
 isRunning(function (running) {
 	if (running) {

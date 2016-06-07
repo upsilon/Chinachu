@@ -1252,7 +1252,7 @@ function mirakurunProgramsToLegacyPrograms(ch, service, programs) {
 				channel: ch.id
 			},
 			title: [{ _: program.name || '' }],
-			desc: [{ _: program.description || '' }],
+			desc: [{ _: [program.description, program.long_description].filter(x => x && !/^\s*$/.test(x)).join('\r\n\r\n') }],
 			category: [, { _: program.genres && genreTable[program.genres[0].lv1] }],
 
 			startAt: program.startAt,

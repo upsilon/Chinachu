@@ -282,7 +282,7 @@ P = Class.create(P, {
 		});
 		
 		new flagrate.Element('div', { 'class': 'program-detail' }).update(
-			program.detail
+			program.detail.replace(/\r?\n/g, '<br/>')
 		).insertTo(this.view.content);
 		
 		new sakura.ui.Alert({

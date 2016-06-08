@@ -43,6 +43,9 @@ function main(avinfo) {
 			var ext    = request.query.ext || 'm2ts';
 			var prefix = request.query.prefix || '';
 
+			// BASIC 認証の ユーザ名:パスワード の組を URL に含める
+			prefix = prefix.replace(/^https?:\/\//, '$&' + config.wuiUsers[0] + '@');
+
 			var target = prefix + 'watch.' + ext  + url.parse(request.url).search;
 
 			response.write('<?xml version="1.0" encoding="UTF-8"?>\n');

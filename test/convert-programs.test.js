@@ -185,8 +185,8 @@ describe('convertPrograms', () => {
 		it('subTitle には title から抽出したサブタイトルが入る', () => {
 			should.strictEqual(programs[0].subTitle, 'サブタイトル');
 		});
-		it('title から話数を除去し、サブタイトルは残す', () => {
-			should.strictEqual(programs[0].title, 'タイトル　「サブタイトル」');
+		it('title から話数とサブタイトルを除去する', () => {
+			should.strictEqual(programs[0].title, 'タイトル');
 		});
 	});
 

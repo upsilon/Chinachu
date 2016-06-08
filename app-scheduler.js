@@ -412,6 +412,9 @@ function convertPrograms(p, ch) {
 		} else if (desc.match(/『([^『』]+)』/) !== null) {
 			subtitle = desc.match(/『([^『』]+)』/)[1];
 		}
+
+		// title に含まれるサブタイトルを除去
+		title = title.replace(/([^版])\s*「.+」/, '$1');
 		
 		var flags = [];
 		var flagsSource = c.title[0]._

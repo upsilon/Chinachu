@@ -392,8 +392,7 @@ function convertPrograms(p, ch) {
 		var title = c.title[0]._;
 		
 		title = title
-			.replace(/【.{1,2}】/g, '')
-			.replace(/\[.\]/g, '')
+			.replace(/[【\[][^出]{1,2}[\]】]/g, '')
 			.replace(/[「（]第?[0-9０-９零一壱壹弌二弐貮貳三参參弎四肆五伍六陸七柒漆八捌九玖十拾廿卄]+[話回]?[」）]/g, '')
 			.replace(/[#＃♯第][0-9０-９零一壱壹弌二弐貮貳三参參弎四肆五伍六陸七柒漆八捌九玖十拾廿卄]+[話回]?/g, '');
 		
@@ -422,7 +421,7 @@ function convertPrograms(p, ch) {
 			.replace(/【/g, '[')
 			.replace(/】/g, ']')
 			.replace(/\[無料\]/g, '[無]');
-		var matchedFlags = (flagsSource.match(/\[(.)\]/g) || []);
+		var matchedFlags = (flagsSource.match(/\[([^出])\]/g) || []);
 		for (j = 0, m = matchedFlags.length; j < m; j++) {
 			flags.push(matchedFlags[j].match(/(?:【|\[)(.)(?:】|\])/)[1]);
 		}

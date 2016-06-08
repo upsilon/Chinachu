@@ -319,4 +319,20 @@ describe('convertPrograms', () => {
 			});
 		});
 	});
+
+	describe('title に含まれる【出】はフラグとして扱わない', () => {
+		const c = clone(baseProgram);
+		c.title = [
+			{ $: { lang: 'ja_JP' }, _: 'ほげほげ 【出】出演者名' },
+		];
+
+		const programs = scheduler.convertPrograms([c], ch);
+
+		it('タイトルは「ほげほげ 【出】出演者名」', () => {
+			should.strictEqual(programs[0].title, 'ほげほげ 【出】出演者名');
+		});
+		it('フラグは無し', () => {
+			should.strictEqual(programs[0].flags.length, 0);
+		});
+	});
 });

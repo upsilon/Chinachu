@@ -28,8 +28,8 @@ Usushio では使わない
 			response.write('<?xml version="1.0" encoding="UTF-8"?>\n');
 			response.write('<playlist version="1" xmlns="http://xspf.org/ns/0/">\n');
 			response.write('<trackList>\n');
-			response.write('<track>\n<location>' + target.replace(/&/g, '&amp;') + '</location>\n');
-			response.write('<title>' + channel.name + '</title>\n</track>\n');
+			response.write('<track>\n<location>' + target.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/&/g, '&amp;') + '</location>\n');
+			response.write('<title>' + channel.name.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/&/g, '&amp;') + '</title>\n</track>\n');
 			response.write('</trackList>\n');
 			response.write('</playlist>\n');
 

@@ -299,5 +299,24 @@ describe('convertPrograms', () => {
 				should.strictEqual(programs[0].subTitle, 'サブタイトル');
 			});
 		});
+
+		context('ほげほげ「三重県」', () => {
+			const c = clone(baseProgram);
+			c.title = [
+				{ $: { lang: 'ja_JP' }, _: 'ほげほげ「三重県」' },
+			];
+
+			const programs = scheduler.convertPrograms([c], ch);
+
+			it('タイトルは「ほげほげ」', () => {
+				should.strictEqual(programs[0].title, 'ほげほげ');
+			});
+			it('タイトルに話数は含まれていない', () => {
+				should.strictEqual(programs[0].episode, null);
+			});
+			it('サブタイトルは「三重県」', () => {
+				should.strictEqual(programs[0].subTitle, '三重県');
+			});
+		});
 	});
 });

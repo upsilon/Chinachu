@@ -338,6 +338,25 @@ describe('convertPrograms', () => {
 				should.strictEqual(programs[0].subTitle, 'サブタイトル');
 			});
 		});
+
+		context('ほげほげ第2シーズン「サブタイトル」', () => {
+			const c = clone(baseProgram);
+			c.title = [
+				{ $: { lang: 'ja_JP' }, _: 'ほげほげ第2シーズン「サブタイトル」' },
+			];
+
+			const programs = scheduler.convertPrograms([c], ch);
+
+			it('タイトルは「ほげほげ第2シーズン」', () => {
+				should.strictEqual(programs[0].title, 'ほげほげ第2シーズン');
+			});
+			it('タイトルに話数は含まれていない', () => {
+				should.strictEqual(programs[0].episode, null);
+			});
+			it('サブタイトルは「サブタイトル」', () => {
+				should.strictEqual(programs[0].subTitle, 'サブタイトル');
+			});
+		});
 	});
 
 	describe('title に含まれる【出】はフラグとして扱わない', () => {

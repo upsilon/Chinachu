@@ -318,6 +318,26 @@ describe('convertPrograms', () => {
 				should.strictEqual(programs[0].subTitle, '三重県');
 			});
 		});
+
+		// Issue #273
+		context('アニメイズム「タイトル」 #10「サブタイトル」', () => {
+			const c = clone(baseProgram);
+			c.title = [
+				{ $: { lang: 'ja_JP' }, _: 'アニメイズム「タイトル」 #10「サブタイトル」' },
+			];
+
+			const programs = scheduler.convertPrograms([c], ch);
+
+			it('「アニメイズム」の部分はタイトルに含めない', () => {
+				should.strictEqual(programs[0].title, 'タイトル');
+			});
+			it('「#10」の部分は話数として扱う', () => {
+				should.strictEqual(programs[0].episode, 10);
+			});
+			it('サブタイトルは後半の「」を使う', () => {
+				should.strictEqual(programs[0].subTitle, 'サブタイトル');
+			});
+		});
 	});
 
 	describe('title に含まれる【出】はフラグとして扱わない', () => {
